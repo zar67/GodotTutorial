@@ -13,7 +13,7 @@ func HandleInput():
 
 # Custom function to update the animation
 func UpdateAnimation():
-	if velocity.length() == 0:
+	if velocity.length() == 0 && animations.is_playing():
 		animations.stop()
 		return
 	
