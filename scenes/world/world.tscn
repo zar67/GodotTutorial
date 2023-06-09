@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://44khcbk6jbxk"]
+[gd_scene load_steps=9 format=3 uid="uid://44khcbk6jbxk"]
 
 [ext_resource type="PackedScene" uid="uid://dmrcglmfl0km7" path="res://player/player.tscn" id="1_6iqew"]
 [ext_resource type="Texture2D" uid="uid://bsjpr68hmrd5m" path="res://assets/world/tiles_floor.png" id="2_4rhnc"]
+[ext_resource type="Texture2D" uid="uid://c1rqumclv0kmn" path="res://assets/world/animated_flower.png" id="3_vhu4n"]
 [ext_resource type="Texture2D" uid="uid://bo1r561nyiu6m" path="res://assets/world/tiles_nature.png" id="4_oo0ub"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gm2sm"]
@@ -636,13 +637,23 @@ texture = ExtResource("4_oo0ub")
 13:11/0 = 0
 14:11/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ncoum"]
+texture = ExtResource("3_vhu4n")
+0:0/animation_frame_0/duration = 0.4
+0:0/animation_frame_1/duration = 0.4
+0:0/animation_frame_2/duration = 0.4
+0:0/animation_frame_3/duration = 0.4
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_05wpx"]
 sources/0 = SubResource("TileSetAtlasSource_gm2sm")
 sources/2 = SubResource("TileSetAtlasSource_wmbyr")
+sources/3 = SubResource("TileSetAtlasSource_ncoum")
 
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_05wpx")
 format = 2
 layer_0/name = "Ground"
@@ -653,7 +664,14 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(327689, 393218, 11, 131074, 393218, 11, 327683, 262146, 11, 3, 262146, 11, 131083, 262146, 11, 393216, 65538, 11, 6, 65538, 11, 196617, 65538, 11, 327685, 2, 8, 65545, 131074, 0, 262144, 131074, 0, 393226, 131074, 0, 131075, 131074, 0)
+layer_1/tile_data = PackedInt32Array(327689, 3, 0, 131074, 3, 0, 327683, 262146, 11, 3, 262146, 11, 131083, 262146, 11, 393216, 65538, 11, 6, 65538, 11, 196617, 65538, 11)
+layer_2/name = "Trees"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 2
+layer_2/tile_data = PackedInt32Array(262144, 131074, 0, 131075, 131074, 0, 65545, 131074, 0, 393226, 131074, 0, 327685, 2, 8)
 
-[node name="Player" parent="." instance=ExtResource("1_6iqew")]
+[node name="Player" parent="TileMap" instance=ExtResource("1_6iqew")]
 position = Vector2(91, 48)

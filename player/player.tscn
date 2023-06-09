@@ -3,6 +3,21 @@
 [ext_resource type="Script" path="res://player/PlayerController.gd" id="1_srxk7"]
 [ext_resource type="Texture2D" uid="uid://dvu7j1pfh2o3s" path="res://assets/player.png" id="1_u4ibe"]
 
+[sub_resource type="Animation" id="Animation_rfl2k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_5fnjo"]
 resource_name = "player_walk_down"
 length = 0.8
@@ -19,39 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 4, 8, 12]
-}
-
-[sub_resource type="Animation" id="Animation_rfl2k"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_ra2kb"]
-resource_name = "player_walk_up"
-length = 0.8
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [1, 5, 9, 13]
 }
 
 [sub_resource type="Animation" id="Animation_by5px"]
@@ -90,6 +72,24 @@ tracks/0/keys = {
 "values": [3, 7, 11, 15]
 }
 
+[sub_resource type="Animation" id="Animation_ra2kb"]
+resource_name = "player_walk_up"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 5, 9, 13]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lf2r1"]
 _data = {
 "RESET": SubResource("Animation_rfl2k"),
@@ -100,6 +100,8 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_srxk7")
 
