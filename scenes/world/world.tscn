@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://44khcbk6jbxk"]
+[gd_scene load_steps=12 format=3 uid="uid://44khcbk6jbxk"]
 
 [ext_resource type="PackedScene" uid="uid://dmrcglmfl0km7" path="res://player/player.tscn" id="1_6iqew"]
 [ext_resource type="Texture2D" uid="uid://bsjpr68hmrd5m" path="res://assets/world/tiles_floor.png" id="2_4rhnc"]
 [ext_resource type="Texture2D" uid="uid://c1rqumclv0kmn" path="res://assets/world/animated_flower.png" id="3_vhu4n"]
 [ext_resource type="Texture2D" uid="uid://bo1r561nyiu6m" path="res://assets/world/tiles_nature.png" id="4_oo0ub"]
 [ext_resource type="Script" path="res://scenes/world/FollowCam.gd" id="5_8p8j4"]
+[ext_resource type="PackedScene" uid="uid://d3fjiud86ng2f" path="res://scenes/entitys/slime.tscn" id="6_a3pig"]
+[ext_resource type="Script" path="res://scenes/entitys/SlimeController.gd" id="7_rgtun"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gm2sm"]
 texture = ExtResource("2_4rhnc")
@@ -2827,3 +2829,9 @@ limit_right = 592
 limit_bottom = 416
 script = ExtResource("5_8p8j4")
 tilemap = NodePath("../../TileMap")
+
+[node name="Slime" parent="." instance=ExtResource("6_a3pig")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(122, 5)
+script = ExtResource("7_rgtun")
