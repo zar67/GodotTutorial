@@ -3,6 +3,9 @@ extends CharacterBody2D
 @export var speed: int = 35 # Public variable editable in the inspector
 @onready var animations = $AnimationPlayer # Reference to the AnimationPlayer node
 
+@export var max_health: int = 3
+@onready var current_health: int = max_health
+
 # Custom functino for fetching the current input
 func HandleInput():
 	# Get Movement Direction From Input
@@ -40,4 +43,7 @@ func _physics_process(_delta):
 
 func _on_hit_box_area_entered(area):
 	if area.name == "HitBox":
-		print_debug(area.get_parent().name)
+		current_health -= 1
+		if (current_health < 0):
+			current_health = max_health
+		print_debug(current_health)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dmrcglmfl0km7"]
 
 [ext_resource type="Script" path="res://player/PlayerController.gd" id="1_srxk7"]
-[ext_resource type="Texture2D" uid="uid://dvu7j1pfh2o3s" path="res://assets/player.png" id="1_u4ibe"]
+[ext_resource type="Texture2D" uid="uid://dvu7j1pfh2o3s" path="res://assets/characters/player.png" id="2_wlan8"]
 
 [sub_resource type="Animation" id="Animation_rfl2k"]
 length = 0.001
@@ -115,7 +115,7 @@ script = ExtResource("1_srxk7")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-texture = ExtResource("1_u4ibe")
+texture = ExtResource("2_wlan8")
 offset = Vector2(0, -8)
 hframes = 4
 vframes = 7
