@@ -1,10 +1,14 @@
 extends CharacterBody2D
 
+signal HealthChanged
+
 @export var speed: int = 35 # Public variable editable in the inspector
 @onready var animations = $AnimationPlayer # Reference to the AnimationPlayer node
 
 @export var max_health: int = 3
 @onready var current_health: int = max_health
+
+@export var knockback_power = 500
 
 # Custom functino for fetching the current input
 func HandleInput():
@@ -46,4 +50,10 @@ func _on_hit_box_area_entered(area):
 		current_health -= 1
 		if (current_health < 0):
 			current_health = max_health
-		print_debug(current_health)
+		HealthChanged.emit(current_health)
+		Knockback(area.get_parent().velocity)
+
+func Knockback(enemy_velocity: Vector2):
+	var knockbackDir = (enemy_velocity - velocity).normalized() * knockback_power
+	velocity = knockbackDir
+	move_and_slide()

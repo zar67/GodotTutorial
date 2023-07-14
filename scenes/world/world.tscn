@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://44khcbk6jbxk"]
+[gd_scene load_steps=14 format=3 uid="uid://44khcbk6jbxk"]
 
 [ext_resource type="PackedScene" uid="uid://dmrcglmfl0km7" path="res://player/player.tscn" id="1_6iqew"]
 [ext_resource type="Texture2D" uid="uid://bsjpr68hmrd5m" path="res://assets/world/tiles_floor.png" id="2_4rhnc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d3fjiud86ng2f" path="res://scenes/entitys/slime.tscn" id="6_a3pig"]
 [ext_resource type="Script" path="res://scenes/entitys/SlimeController.gd" id="7_rgtun"]
 [ext_resource type="PackedScene" uid="uid://c6ujf68qhg6wx" path="res://scenes/gui/hearts_container.tscn" id="8_estjl"]
+[ext_resource type="Script" path="res://scenes/world/UIController.gd" id="8_o4kv0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gm2sm"]
 texture = ExtResource("2_4rhnc")
@@ -2829,6 +2830,7 @@ limit_left = -400
 limit_top = -288
 limit_right = 592
 limit_bottom = 416
+position_smoothing_enabled = true
 script = ExtResource("5_8p8j4")
 tilemap = NodePath("../../TileMap")
 
@@ -2865,13 +2867,14 @@ endPoint = NodePath("Marker2D")
 position = Vector2(-100, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("8_o4kv0")
 
 [node name="HeartsContainer" parent="CanvasLayer" instance=ExtResource("8_estjl")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -52.0
+offset_left = -2.0
 offset_top = 2.0
 offset_right = -2.0
-offset_bottom = 42.0
+offset_bottom = 2.0
 grow_horizontal = 0
