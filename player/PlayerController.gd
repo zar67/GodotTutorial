@@ -4,11 +4,16 @@ signal HealthChanged
 
 @export var speed: int = 35 # Public variable editable in the inspector
 @onready var animations = $AnimationPlayer # Reference to the AnimationPlayer node
+@onready var effect_animations = $EffectAnimations # Reference to the EffectsAnimations
+@onready var hurt_timer = $HurtTimer
 
 @export var max_health: int = 3
 @onready var current_health: int = max_health
 
 @export var knockback_power = 500
+
+func _ready():
+	effect_animations.play("RESET")
 
 # Custom functino for fetching the current input
 func HandleInput():
@@ -50,8 +55,14 @@ func _on_hit_box_area_entered(area):
 		current_health -= 1
 		if (current_health < 0):
 			current_health = max_health
+			
 		HealthChanged.emit(current_health)
 		Knockback(area.get_parent().velocity)
+		
+		effect_animations.play("hurt_blink")
+		hurt_timer.start()
+		await hurt_timer.timeout
+		effect_animations.play("RESET")
 
 func Knockback(enemy_velocity: Vector2):
 	var knockbackDir = (enemy_velocity - velocity).normalized() * knockback_power
