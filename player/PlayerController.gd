@@ -30,9 +30,14 @@ func UpdateAnimation():
 	animations.play("player_walk_" + direction)
 
 # Built in function like FixedUpdate in Unity
-func _physics_process(delta):
+func _physics_process(_delta):
 	HandleInput()
-	UpdateAnimation()
 	
 	# Function of CharacterBody2D to apply velocity
 	move_and_slide()
+	
+	UpdateAnimation()
+
+func _on_hit_box_area_entered(area):
+	if area.name == "HitBox":
+		print_debug(area.get_parent().name)

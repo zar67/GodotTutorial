@@ -2781,7 +2781,8 @@ texture = ExtResource("3_vhu4n")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.5, -4.5, 5, -4.5, 8, 0, 8, 8, -8, 8, -8, 0)
 
 [sub_resource type="TileSet" id="TileSet_05wpx"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "sand"
 terrain_set_0/terrain_0/color = Color(0.454902, 0.211765, 0.776471, 1)
@@ -2830,8 +2831,34 @@ limit_bottom = 416
 script = ExtResource("5_8p8j4")
 tilemap = NodePath("../../TileMap")
 
-[node name="Slime" parent="." instance=ExtResource("6_a3pig")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(122, 5)
+[node name="Slime" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("6_a3pig")]
+position = Vector2(86, -9)
 script = ExtResource("7_rgtun")
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Slime"]
+position = Vector2(55, 0)
+
+[node name="Slime2" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("6_a3pig")]
+position = Vector2(66, 124)
+script = ExtResource("7_rgtun")
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Slime2"]
+position = Vector2(60, 0)
+
+[node name="Slime3" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("6_a3pig")]
+position = Vector2(221, 14)
+script = ExtResource("7_rgtun")
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Slime3"]
+position = Vector2(0, 60)
+
+[node name="Slime4" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("6_a3pig")]
+position = Vector2(145, -63)
+script = ExtResource("7_rgtun")
+endPoint = NodePath("Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Slime4"]
+position = Vector2(-100, 0)
